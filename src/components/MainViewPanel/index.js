@@ -8,6 +8,7 @@ import MessageIcon from '@ringcentral-integration/widgets/assets/images/Messages
 import SettingsIcon from '@ringcentral-integration/widgets/assets/images/Settings.svg';
 import MoreMenuIcon from '@ringcentral-integration/widgets/assets/images/MoreMenu.svg';
 import GlipIcon from '@ringcentral-integration/widgets/assets/images/Glip.svg';
+//local images
 
 import DialPadHoverIcon from '@ringcentral-integration/widgets/assets/images/DialPadHover.svg';
 import CallHistoryHoverIcon from '@ringcentral-integration/widgets/assets/images/CallHistoryHover.svg';
@@ -34,6 +35,7 @@ import i18n from './i18n';
 
 export const MainViewPanel = (props) => {
   const {
+    showwsp,
     currentLocale,
     showMessages,
     unreadCounts,
@@ -100,6 +102,7 @@ export const MainViewPanel = (props) => {
         currentPath.substr(0, 9) === '/contacts'
       ),
     },
+    
     showConference && {
       icon: ConferenceIcon,
       activeIcon: ConferenceHoverIcon,
@@ -121,6 +124,37 @@ export const MainViewPanel = (props) => {
       ),
     },
     {
+      //wsp
+      //TODO: Poner el ícono de wsp
+      icon: <img src="https://img.icons8.com/material-outlined/24/ffffff/whatsapp--v1.png"/>,
+      activeIcon: <img src="https://img.icons8.com/material-outlined/24/ffffff/whatsapp.png"/>,
+      moreMenuIcon: SettingsNavIcon,
+      label: i18n.getString('Whatsapp', currentLocale),
+      path: '/whatsapp',
+      isActive: (currentPath) => (
+        currentPath.substr(0, 11) === '/whatsapp'
+      ),
+      /*
+      isActive: (currentPath) => (
+        currentPath === '/messages' ||
+        currentPath === '/composeText' ||
+        currentPath.indexOf('/conversations/') !== -1
+      ),*/
+    },
+    {
+      //Messenger
+      //TODO: Poner el ícono de wsp
+      icon: <img src="https://img.icons8.com/material-outlined/24/ffffff/facebook-messenger--v1.png"/>,
+      activeIcon: <img src="https://img.icons8.com/material-outlined/24/ffffff/facebook-messenger--v1.png"/>,
+      moreMenuIcon: SettingsNavIcon,
+      label: i18n.getString('Messenger', currentLocale),
+      path: '/Messenger',
+      isActive: (currentPath) => (
+        currentPath.substr(0, 11) === '/Messenger'
+      ),
+    },
+
+    {
       icon: SettingsIcon,
       activeIcon: SettingsHoverIcon,
       moreMenuIcon: SettingsNavIcon,
@@ -130,11 +164,12 @@ export const MainViewPanel = (props) => {
         currentPath.substr(0, 9) === '/settings'
       ),
     }
+
   ];
   let tabs = tabList.filter((x) => !!x);
-  if (tabs.length > 5) {
-    const childTabs = tabs.slice(4, tabs.length);
-    tabs = tabs.slice(0, 4);
+  if (tabs.length > 7) {
+    const childTabs = tabs.slice(6, tabs.length);
+    tabs = tabs.slice(0, 6);
     tabs.push({
       icon: ({ currentPath }) => {
         const childTab = childTabs.filter(childTab => (
@@ -167,4 +202,5 @@ export const MainViewPanel = (props) => {
     });
   }
   return <TabNavigationView {...props} tabs={tabs} />;
+  
 }

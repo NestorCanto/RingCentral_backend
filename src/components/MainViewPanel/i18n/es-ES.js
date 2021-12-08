@@ -9,7 +9,8 @@ export default {
   conferenceLabel: "Programar una conferencia",
   hangoutsLabel: "Iniciar Hangouts",
   hangoutsTitle: "Iniciar Hangout con Conferencias",
-  settingsLabel: "Configuración"
+  settingsLabel: "Configuración",
+  Whatsapp:"Whatsapp"
 };
 
 // @key: @#@"dialpadLabel"@#@ @source: @#@"Dial Pad"@#@

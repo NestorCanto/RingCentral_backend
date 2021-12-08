@@ -25,6 +25,8 @@ import ConversationsPage from '@ringcentral-integration/widgets/containers/Conve
 import ConversationPage from '@ringcentral-integration/widgets/containers/ConversationPage';
 import GlipGroups from '@ringcentral-integration/glip-widgets/containers/GlipGroups';
 import GlipChat from '@ringcentral-integration/glip-widgets/containers/GlipChat';
+import Whatsapp from'../../components/whatsapp/whatsapp';
+import Messenger from'../../components/Messenger/Messenger';
 
 import ConferenceCallDialerPage from '@ringcentral-integration/widgets/containers/ConferenceCallDialerPage';
 import { CallsOnholdPage } from '@ringcentral-integration/widgets/containers/CallsOnholdPage';
@@ -258,6 +260,21 @@ export default function App({
                       showGroupNumberName
                       showContactDisplayPlaceholder={false}
                     />
+                  )}
+                />
+                
+                <Route
+                //Whatsapp
+                  path="/whatsapp"
+                  component={() => (
+                    <Whatsapp />
+                  )}
+                />
+                <Route
+                //Whatsapp
+                  path="/Messenger"
+                  component={() => (
+                    <Messenger/>
                   )}
                 />
                 <Route
